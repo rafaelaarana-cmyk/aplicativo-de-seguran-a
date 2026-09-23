@@ -3,169 +3,192 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segurança Digital para Idosos - Guia Prático</title>
-    <link rel="stylesheet" href="estilos.css">
+    <title>ApoioSênior - Pedir Ajuda Ficou Fácil</title>
+    <style>
+        :root {
+            --bg-color: #f4f7f6;
+            --text-color: #1a1a1a;
+            --primary-red: #d9534f;
+            --primary-blue: #0275d8;
+            --primary-green: #5cb85c;
+            --card-bg: #ffffff;
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            margin: 0;
+            padding: 15px;
+            font-size: 22px; /* Fonte ampliada por padrão */
+        }
+
+        header {
+            text-align: center;
+            background-color: #2c3e50;
+            color: white;
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 20px;
+        }
+
+        h1 { margin: 0; font-size: 32px; }
+
+        /* Botão Principal de Emergência */
+        .btn-sos {
+            background-color: var(--primary-red);
+            color: white;
+            width: 100%;
+            padding: 35px 20px;
+            font-size: 36px;
+            font-weight: bold;
+            border: 4px solid #a94442;
+            border-radius: 20px;
+            cursor: pointer;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.3);
+            transition: transform 0.1s;
+            margin-bottom: 30px;
+        }
+
+        .btn-sos:active {
+            transform: scale(0.98);
+        }
+
+        /* Seções de Opções */
+        .grid-ajuda {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 20px;
+        }
+
+        @media (max-width: 600px) {
+            .grid-ajuda { grid-template-columns: 1fr; }
+        }
+
+        .card-opcao {
+            background-color: var(--card-bg);
+            border: 3px solid #ccc;
+            border-radius: 16px;
+            padding: 25px;
+            text-align: center;
+            cursor: pointer;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+        }
+
+        .card-opcao:hover { border-color: var(--primary-blue); }
+        .card-opcao img { width: 60px; height: 60px; margin-bottom: 10px; }
+        .card-opcao h3 { margin: 10px 0 0 0; font-size: 26px; }
+
+        /* Modal / Alerta */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background-color: rgba(0,0,0,0.8);
+            justify-content: center;
+            align-items: center;
+        }
+
+        .modal-content {
+            background-color: white;
+            padding: 40px;
+            border-radius: 20px;
+            text-align: center;
+            max-width: 80%;
+        }
+
+        .btn-fechar {
+            background-color: #333;
+            color: white;
+            padding: 15px 30px;
+            font-size: 22px;
+            border: none;
+            border-radius: 10px;
+            margin-top: 20px;
+            cursor: pointer;
+        }
+    </style>
 </head>
 <body>
 
-    <!-- Caixa de Seleção Invisível para Alternar Alto Contraste -->
-    <input type="checkbox" id="caixa-alto-contraste">
+    <header>
+        <h1>Apoio Sênior</h1>
+        <p>Clique onde precisa de ajuda</p>
+    </header>
 
-    <div class="envoltorio-aplicacao">
+    <main>
+        <!-- Botão SOS Primário -->
+        <button class="btn-sos" onclick="solicitarSOS()" aria-label="Botão de emergência SOS">
+            🚨 PEDIR SOCORRO AGORA
+        </button>
 
-        <!-- Header / Barra de Navegação Superior Completa -->
-        <header class="cabecalho-site">
-            <div class="container cabecalho-conteudo">
-                <div class="logo">
-                    <span class="icone-logo">🛡️</span>
-                    <span class="texto-logo">GuiaSeguro</span>
-                </div>
-
-                <nav class="menu-navegacao" aria-label="Menu Principal">
-                    <a href="#inicio">Início</a>
-                    <a href="#dicas">Dicas</a>
-                    <a href="#direitos">Direitos</a>
-                    <a href="#golpes">Alertas de Golpe</a>
-                </nav>
-
-                <div class="controles-acessibilidade">
-                    <label for="caixa-alto-contraste" class="botao-acessibilidade" tabIndex="0">Alto Contraste 🌓</label>
-                </div>
+        <h2>Outros Tipos de Ajuda</h2>
+        
+        <div class="grid-ajuda">
+            <div class="card-opcao" onclick="pedirAjuda('Remédios ou Farmácia')">
+                <span style="font-size: 50px;">💊</span>
+                <h3>Preciso de Remédios</h3>
             </div>
-        </header>
-
-        <!-- 1. HERO BANNER (Início do Site em Duas Colunas) -->
-        <section class="hero-banner" id="inicio">
-            <div class="container hero-conteudo">
-                
-                <!-- Coluna da Esquerda: Textos e Botão CTA -->
-                <div class="hero-texto">
-                    <span class="tag-destaque">Guia Prático & Acessível</span>
-                    <h1>Segurança Digital para a Melhor Idade</h1>
-                    <p>Aprenda a navegar na internet com total tranquilidade, proteja seus dados bancários e saiba como evitar golpes virtuais de forma simples.</p>
-                    
-                    <div class="hero-acoes">
-                        <a href="#golpes" class="botao-principal">🆘 Preciso de Ajuda Agora</a>
-                        <a href="#dicas" class="botao-secundario">Ver Dicas de Segurança</a>
-                    </div>
-                </div>
-
-                <!-- Coluna da Direita: Imagem/Ilustração -->
-                <div class="hero-imagem">
-                    <img src="https://images.unsplash.com/photo-1581579438747-1dc8d1e05fec?q=80&w=800&auto=format&fit=crop" alt="Idoso utilizando um tablet com segurança e sorrindo">
-                </div>
-
+            
+            <div class="card-opcao" onclick="pedirAjuda('Compras de Mercado')">
+                <span style="font-size: 50px;">🛒</span>
+                <h3>Compras de Mercado</h3>
             </div>
-        </section>
 
-        <main class="conteudo-principal" role="main">
+            <div class="card-opcao" onclick="pedirAjuda('Alguém para conversar')">
+                <span style="font-size: 50px;">🗣️</span>
+                <h3>Quer conversar</h3>
+            </div>
 
-            <!-- 2. DICAS IMPORTANTES -->
-            <section class="cartao-secao" id="dicas" aria-labelledby="dicas-titulo">
-                <h2 id="dicas-titulo" class="titulo-secao">💡 3 Dicas Importantes de Segurança</h2>
-                
-                <div class="grade-dicas">
-                    <article class="cartao-dica">
-                        <div class="numero-dica">1</div>
-                        <div class="conteudo-dica">
-                            <h3>Nunca envie senhas ou códigos</h3>
-                            <p>Bancos, familiares ou empresas de confiança jamais pedem suas senhas ou o código de confirmação recebido por SMS.</p>
-                        </div>
-                    </article>
+            <div class="card-opcao" onclick="pedirAjuda('Apoio com Transporte')">
+                <span style="font-size: 50px;">🚗</span>
+                <h3>Preciso de Transporte</h3>
+            </div>
+        </div>
+    </main>
 
-                    <article class="cartao-dica">
-                        <div class="numero-dica">2</div>
-                        <div class="conteudo-dica">
-                            <h3>Desconfie de Urgência e Dinheiro Fácil</h3>
-                            <p>Se alguém disser que você precisa transferir dinheiro agora ou perderá uma promoção incrível, PARE! Golpistas usam a pressa para enganar.</p>
-                        </div>
-                    </article>
-
-                    <article class="cartao-dica">
-                        <div class="numero-dica">3</div>
-                        <div class="conteudo-dica">
-                            <h3>Ligue para o Número Antigo</h3>
-                            <p>Se um parente mandar mensagem de um número novo pedindo dinheiro no Pix, não pague. Ligue no número antigo que você já tem salvo para confirmar.</p>
-                        </div>
-                    </article>
-                </div>
-            </section>
-
-            <!-- 3. DIREITOS NA INTERNET -->
-            <section class="cartao-secao" id="direitos" aria-labelledby="direitos-titulo">
-                <h2 id="direitos-titulo" class="titulo-secao">📜 Seus Direitos na Internet</h2>
-                
-                <div class="caixa-direitos">
-                    <p>Você sabia que a lei protege você também no mundo digital? Conheça os seus principais direitos:</p>
-                </div>
-
-                <ul class="lista-direitos">
-                    <li><strong>Direito à Privacidade (LGPD):</strong> Suas informações pessoais e bancárias pertencem a você. Nenhuma empresa pode vendê-las sem sua autorização.</li>
-                    <li><strong>Proteção contra Fraudes:</strong> O Estatuto da Pessoa Idosa e o Código de Defesa do Consumidor protegem você contra cobranças indevidas e empréstimos não solicitados.</li>
-                    <li><strong>Atendimento Humano no Banco:</strong> Você tem o direito de ser atendido por uma pessoa de verdade no seu banco, caso não consiga resolver pelo aplicativo.</li>
-                </ul>
-
-                <div class="caixa-tocador-audio" aria-label="Tocador de áudio para ouvir o texto de direitos">
-                    <p>🔊 Clique abaixo para ouvir a explicação sobre seus Direitos:</p>
-                    <audio controls preload="none">
-                        <source src="https://actions.google.com/sounds/v1/speech/human_voice_sample.ogg" type="audio/ogg">
-                        Seu navegador não suporta o tocador de áudio.
-                    </audio>
-                </div>
-            </section>
-
-            <!-- 4. COMO SABER SE ESTOU CAINDO EM UM GOLPE -->
-            <section class="cartao-secao" id="golpes" aria-labelledby="golpe-titulo">
-                <h2 id="golpe-titulo" class="titulo-secao">⚠️ Como Saber se Estou Caindo em um Golpe?</h2>
-                <p class="texto-orientacao">Fique atento! Se acontecer alguma destas atitudes suspeitas, pode ser um golpe:</p>
-
-                <ul class="lista-alertas">
-                    <li class="item-alerta">
-                        <span class="icone-alerta">🛑</span>
-                        <div>
-                            <strong>Exigência de Segredo:</strong>
-                            <p>O golpista diz: "Não conte para ninguém, nem para sua família ou gerentes do banco". Quem é honesto não exige segredo!</p>
-                        </div>
-                    </li>
-
-                    <li class="item-alerta">
-                        <span class="icone-alerta">📞</span>
-                        <div>
-                            <strong>Ligação Dizendo que sua Conta foi Invadida:</strong>
-                            <p>Dizem que há uma "compra suspeita" e pedem para você fazer uma transferência de teste ou baixar um programa no celular.</p>
-                        </div>
-                    </li>
-
-                    <li class="item-alerta">
-                        <span class="icone-alerta">📲</span>
-                        <div>
-                            <strong>Links para Clicar em Mensagens de Texto (SMS):</strong>
-                            <p>Mensagens dizendo que suas milhas vão expirar, que sua encomenda está presa ou que seu cartão foi bloqueado com um link azul.</p>
-                        </div>
-                    </li>
-
-                    <li class="item-alerta">
-                        <span class="icone-alerta">🎁</span>
-                        <div>
-                            <strong>Prêmios de Sorteios que Você Não Participou:</strong>
-                            <p>Mensagens dizendo que você ganhou um prêmio grande, mas precisa pagar uma taxa via Pix para receber.</p>
-                        </div>
-                    </li>
-                </ul>
-            </section>
-
-        </main>
-
-        <!-- Rodapé -->
-        <footer class="rodape-principal">
-            <p>Guia de Segurança Digital - Feito para proteger a melhor idade.</p>
-            <p><small>Em caso de dúvidas, consulte sempre um familiar de confiança.</small></p>
-        </footer>
-
+    <!-- Modal de Confirmação -->
+    <div id="modalAviso" class="modal">
+        <div class="modal-content">
+            <h2 id="modalTitulo">Enviando Pedido...</h2>
+            <p id="modalMensagem">Estamos avisando seus contatos de confiança.</p>
+            <button class="btn-fechar" onclick="fecharModal()">Fechar / Cancelar</button>
+        </div>
     </div>
 
-</body>
-</html>
+    <script>
+        // Função de sintetizador de voz (Lê para o idoso)
+        function falarTexto(texto) {
+            if ('speechSynthesis' in window) {
+                const fala = new SpeechSynthesisUtterance(texto);
+                fala.lang = 'pt-BR';
+                fala.rate = 0.9; // Fala um pouco mais devagar
+                window.speechSynthesis.speak(fala);
+            }
+        }
 
+        function solicitarSOS() {
+            const msg = "Sinal de Emergência acionado! Enviando sua localização para a família e serviços de emergência.";
+            document.getElementById('modalTitulo').innerText = "🚨 SOCORRO SOLICITADO";
+            document.getElementById('modalMensagem').innerText = msg;
+            document.getElementById('modalAviso').style.display = 'flex';
+            falarTexto(msg);
+        }
+
+        function pedirAjuda(tipo) {
+            const msg = `Você pediu ajuda com: ${tipo}. Um voluntário ou familiar entrará em contato em breve.`;
+            document.getElementById('modalTitulo').innerText = "Pedido Registrado";
+            document.getElementById('modalMensagem').innerText = msg;
+            document.getElementById('modalAviso').style.display = 'flex';
+            falarTexto(msg);
+        }
+
+        function fecharModal() {
+            document.getElementById('modalAviso').style.display = 'none';
+            if ('speechSynthesis' in window) {
+                window.speechSynthesis.cancel();
+            }
+        }
+    </script>
 </body>
 </html>
