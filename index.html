@@ -13,25 +13,55 @@
 
     <div class="envoltorio-aplicacao">
 
-        <!-- Barra de Acessibilidade Fixa -->
-        <nav class="barra-acessibilidade" aria-label="Controles de Acessibilidade">
-            <span class="titulo-acessibilidade">♿ Acessibilidade</span>
-            <div class="controles-acessibilidade">
-                <label for="caixa-alto-contraste" class="botao-acessibilidade" tabIndex="0">Alto Contraste 🌓</label>
-            </div>
-        </nav>
+        <!-- Header / Barra de Navegação Superior Completa -->
+        <header class="cabecalho-site">
+            <div class="container cabecalho-conteudo">
+                <div class="logo">
+                    <span class="icone-logo">🛡️</span>
+                    <span class="texto-logo">GuiaSeguro</span>
+                </div>
 
-        <!-- 1. INÍCIO: BANNER COM BOTÃO DE AJUDA -->
-        <header class="banner-principal" id="inicio">
-            <h1>🛡️ Guia de Segurança Digital</h1>
-            <p>Aprenda a navegar na internet com tranquilidade, proteger seus dados e evitar fraudes.</p>
-            <a href="#secao-ajuda" class="botao-ajuda-banner" aria-label="Ir para a seção de ajuda rápida">🆘 PRECISO DE AJUDA AGORA</a>
+                <nav class="menu-navegacao" aria-label="Menu Principal">
+                    <a href="#inicio">Início</a>
+                    <a href="#dicas">Dicas</a>
+                    <a href="#direitos">Direitos</a>
+                    <a href="#golpes">Alertas de Golpe</a>
+                </nav>
+
+                <div class="controles-acessibilidade">
+                    <label for="caixa-alto-contraste" class="botao-acessibilidade" tabIndex="0">Alto Contraste 🌓</label>
+                </div>
+            </div>
         </header>
+
+        <!-- 1. HERO BANNER (Início do Site em Duas Colunas) -->
+        <section class="hero-banner" id="inicio">
+            <div class="container hero-conteudo">
+                
+                <!-- Coluna da Esquerda: Textos e Botão CTA -->
+                <div class="hero-texto">
+                    <span class="tag-destaque">Guia Prático & Acessível</span>
+                    <h1>Segurança Digital para a Melhor Idade</h1>
+                    <p>Aprenda a navegar na internet com total tranquilidade, proteja seus dados bancários e saiba como evitar golpes virtuais de forma simples.</p>
+                    
+                    <div class="hero-acoes">
+                        <a href="#golpes" class="botao-principal">🆘 Preciso de Ajuda Agora</a>
+                        <a href="#dicas" class="botao-secundario">Ver Dicas de Segurança</a>
+                    </div>
+                </div>
+
+                <!-- Coluna da Direita: Imagem/Ilustração -->
+                <div class="hero-imagem">
+                    <img src="https://images.unsplash.com/photo-1581579438747-1dc8d1e05fec?q=80&w=800&auto=format&fit=crop" alt="Idoso utilizando um tablet com segurança e sorrindo">
+                </div>
+
+            </div>
+        </section>
 
         <main class="conteudo-principal" role="main">
 
-            <!-- 2. DICAS IMPORTANTES (3 Dicas Simples) -->
-            <section class="cartao-secao" aria-labelledby="dicas-titulo">
+            <!-- 2. DICAS IMPORTANTES -->
+            <section class="cartao-secao" id="dicas" aria-labelledby="dicas-titulo">
                 <h2 id="dicas-titulo" class="titulo-secao">💡 3 Dicas Importantes de Segurança</h2>
                 
                 <div class="grade-dicas">
@@ -61,8 +91,8 @@
                 </div>
             </section>
 
-            <!-- 3. DIREITOS NA INTERNET (Texto e Fala) -->
-            <section class="cartao-secao" aria-labelledby="direitos-titulo">
+            <!-- 3. DIREITOS NA INTERNET -->
+            <section class="cartao-secao" id="direitos" aria-labelledby="direitos-titulo">
                 <h2 id="direitos-titulo" class="titulo-secao">📜 Seus Direitos na Internet</h2>
                 
                 <div class="caixa-direitos">
@@ -75,7 +105,6 @@
                     <li><strong>Atendimento Humano no Banco:</strong> Você tem o direito de ser atendido por uma pessoa de verdade no seu banco, caso não consiga resolver pelo aplicativo.</li>
                 </ul>
 
-                <!-- Recurso de Áudio/Fala NATIVO do HTML -->
                 <div class="caixa-tocador-audio" aria-label="Tocador de áudio para ouvir o texto de direitos">
                     <p>🔊 Clique abaixo para ouvir a explicação sobre seus Direitos:</p>
                     <audio controls preload="none">
@@ -85,8 +114,8 @@
                 </div>
             </section>
 
-            <!-- 4. COMO SABER SE ESTOU CAINDO EM UM GOLPE (Atitudes Suspeitas) -->
-            <section class="cartao-secao" aria-labelledby="golpe-titulo">
+            <!-- 4. COMO SABER SE ESTOU CAINDO EM UM GOLPE -->
+            <section class="cartao-secao" id="golpes" aria-labelledby="golpe-titulo">
                 <h2 id="golpe-titulo" class="titulo-secao">⚠️ Como Saber se Estou Caindo em um Golpe?</h2>
                 <p class="texto-orientacao">Fique atento! Se acontecer alguma destas atitudes suspeitas, pode ser um golpe:</p>
 
