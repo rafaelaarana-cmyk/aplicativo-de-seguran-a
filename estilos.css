@@ -1,4 +1,4 @@
-/* Reset de CSS e Variáveis de Acessibilidade */
+/* Reset e Variáveis globais */
 * {
     box-sizing: border-box;
     margin: 0;
@@ -18,12 +18,12 @@ html {
     --amarelo-destaque: #f59e0b;
     --vermelho-alerta: #dc2626;
     --vermelho-alerta-hover: #b91c1c;
-    --cor-borda: #cbd5e1;
+    --cor-borda: #e2e8f0;
     --escala-fonte: 1.15rem;
     --contorno-foco: 4px solid #f59e0b;
 }
 
-/* Estrutura para Alto Contraste usando Caixa de Seleção em CSS */
+/* Modo Alto Contraste */
 #caixa-alto-contraste {
     display: none;
 }
@@ -45,34 +45,60 @@ body {
     line-height: 1.6;
     background-color: var(--cor-fundo);
     color: var(--cor-texto);
-    padding-bottom: 50px;
 }
 
-/* Barra de Acessibilidade Superior */
-.barra-acessibilidade {
+.container {
+    max-width: 1100px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Cabeçalho e Menu Superior */
+.cabecalho-site {
     background-color: #0f172a;
     color: #ffffff;
-    padding: 12px 20px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    flex-wrap: wrap;
-    gap: 10px;
     position: sticky;
     top: 0;
     z-index: 1000;
     border-bottom: 3px solid #334155;
 }
 
-.titulo-acessibilidade {
-    font-weight: bold;
-    font-size: 1.1rem;
+.cabecalho-conteudo {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    flex-wrap: wrap;
+    gap: 15px;
 }
 
-.controles-acessibilidade {
+.logo {
     display: flex;
-    gap: 10px;
     align-items: center;
+    gap: 10px;
+    font-size: 1.4rem;
+    font-weight: bold;
+}
+
+.menu-navegacao {
+    display: flex;
+    gap: 20px;
+}
+
+.menu-navegacao a {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 1.05rem;
+    padding: 5px 10px;
+    border-radius: 6px;
+    transition: background-color 0.2s;
+}
+
+.menu-navegacao a:hover,
+.menu-navegacao a:focus {
+    background-color: #334155;
+    outline: var(--contorno-foco);
 }
 
 .botao-acessibilidade {
@@ -80,11 +106,10 @@ body {
     color: #ffffff;
     border: 2px solid #ffffff;
     padding: 8px 16px;
-    font-size: 1rem;
+    font-size: 0.95rem;
     font-weight: bold;
     border-radius: 8px;
     cursor: pointer;
-    text-decoration: none;
     display: inline-block;
 }
 
@@ -94,68 +119,140 @@ body {
     background-color: #334155;
 }
 
-/* Banner de Início */
-.banner-principal {
-    background-color: var(--azul-principal);
+/* Hero Banner (Layout 2 Colunas) */
+.hero-banner {
+    background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
     color: #ffffff;
-    padding: 40px 20px;
-    text-align: center;
+    padding: 60px 0;
     border-bottom: 6px solid var(--cor-borda);
 }
 
-#caixa-alto-contraste:checked ~ .envoltorio-aplicacao .banner-principal {
-    background-color: #000000;
-    color: #fde047;
+#caixa-alto-contraste:checked ~ .envoltorio-aplicacao .hero-banner {
+    background: #000000;
 }
 
-.banner-principal h1 {
-    font-size: 2.2rem;
-    margin-bottom: 15px;
-    line-height: 1.2;
+.hero-conteudo {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
 }
 
-.banner-principal p {
-    font-size: 1.3rem;
-    max-width: 700px;
-    margin: 0 auto 25px auto;
+.hero-texto {
+    flex: 1;
 }
 
-.botao-ajuda-banner {
+.tag-destaque {
     display: inline-block;
+    background-color: rgba(255, 255, 255, 0.2);
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 0.95rem;
+    font-weight: bold;
+    margin-bottom: 15px;
+    letter-spacing: 0.5px;
+}
+
+#caixa-alto-contraste:checked ~ .envoltorio-aplicacao .tag-destaque {
+    background-color: #fde047;
+    color: #000000;
+}
+
+.hero-texto h1 {
+    font-size: 2.6rem;
+    line-height: 1.2;
+    margin-bottom: 20px;
+}
+
+.hero-texto p {
+    font-size: 1.25rem;
+    margin-bottom: 30px;
+    opacity: 0.95;
+}
+
+.hero-acoes {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.botao-principal {
     background-color: var(--vermelho-alerta);
     color: #ffffff;
-    font-size: 1.4rem;
+    font-size: 1.15rem;
     font-weight: bold;
-    padding: 18px 30px;
+    padding: 16px 28px;
     border-radius: 50px;
     text-decoration: none;
-    border: 3px solid #ffffff;
-    box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-    transition: transform 0.2s;
+    border: 2px solid #ffffff;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.2s, background-color 0.2s;
 }
 
-.botao-ajuda-banner:hover, 
-.botao-ajuda-banner:focus {
-    outline: var(--contorno-foco);
+.botao-principal:hover,
+.botao-principal:focus {
     background-color: var(--vermelho-alerta-hover);
-    transform: scale(1.05);
+    transform: translateY(-2px);
+    outline: var(--contorno-foco);
 }
 
-/* Container Conteúdo */
+.botao-secundario {
+    background-color: #ffffff;
+    color: var(--azul-escuro);
+    font-size: 1.15rem;
+    font-weight: bold;
+    padding: 16px 28px;
+    border-radius: 50px;
+    text-decoration: none;
+    transition: transform 0.2s, background-color 0.2s;
+}
+
+#caixa-alto-contraste:checked ~ .envoltorio-aplicacao .botao-secundario {
+    background-color: #fde047;
+    color: #000000;
+}
+
+.botao-secundario:hover,
+.botao-secundario:focus {
+    background-color: #f1f5f9;
+    transform: translateY(-2px);
+    outline: var(--contorno-foco);
+}
+
+.hero-imagem {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-imagem img {
+    width: 100%;
+    max-width: 480px;
+    height: 350px;
+    object-fit: cover;
+    border-radius: 20px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.25);
+    border: 4px solid #ffffff;
+}
+
+#caixa-alto-contraste:checked ~ .envoltorio-aplicacao .hero-imagem img {
+    border-color: #fde047;
+}
+
+/* Conteúdo Principal */
 .conteudo-principal {
-    max-width: 900px;
-    margin: 30px auto;
+    max-width: 1100px;
+    margin: 40px auto;
     padding: 0 20px;
 }
 
-/* Cartões de Seção */
 .cartao-secao {
     background-color: var(--cor-cartao);
-    border: 3px solid var(--cor-borda);
+    border: 2px solid var(--cor-borda);
     border-radius: 16px;
-    padding: 25px;
-    margin-bottom: 35px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
 }
 
 .titulo-secao {
@@ -164,16 +261,13 @@ body {
     margin-bottom: 20px;
     padding-bottom: 10px;
     border-bottom: 3px solid var(--cor-borda);
-    display: flex;
-    align-items: center;
-    gap: 12px;
 }
 
 #caixa-alto-contraste:checked ~ .envoltorio-aplicacao .titulo-secao {
     color: #fde047;
 }
 
-/* Grade de Dicas */
+/* Dicas */
 .grade-dicas {
     display: grid;
     gap: 20px;
@@ -214,7 +308,7 @@ body {
     margin-bottom: 8px;
 }
 
-/* Seção Direitos na Internet */
+/* Direitos */
 .caixa-direitos {
     background-color: #f0f9ff;
     border-left: 6px solid var(--azul-principal);
@@ -238,17 +332,13 @@ body {
     border: 2px dashed var(--azul-principal);
     padding: 15px;
     border-radius: 12px;
-    margin-top: 15px;
+    margin-top: 20px;
     text-align: center;
 }
 
 .caixa-tocador-audio p {
     font-weight: bold;
     margin-bottom: 10px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
 }
 
 audio {
@@ -257,7 +347,7 @@ audio {
     height: 45px;
 }
 
-/* Seção Como Saber Se Estou Caindo Em Um Golpe */
+/* Alertas de Golpe */
 .texto-orientacao {
     margin-bottom: 20px;
 }
@@ -284,7 +374,6 @@ audio {
 
 .icone-alerta {
     font-size: 2rem;
-    line-height: 1;
     flex-shrink: 0;
 }
 
@@ -302,25 +391,33 @@ audio {
 /* Rodapé */
 .rodape-principal {
     text-align: center;
-    padding: 20px;
+    padding: 30px 20px;
     background-color: #0f172a;
     color: #ffffff;
-    margin-top: 40px;
 }
 
-/* Ajustes para Dispositivos Móveis */
-@media (max-width: 600px) {
-    .banner-principal h1 {
-        font-size: 1.7rem;
-    }
-    .banner-principal p {
-        font-size: 1.1rem;
-    }
-    .botao-ajuda-banner {
-        font-size: 1.1rem;
-        padding: 15px 20px;
-    }
-    .cartao-dica {
+/* Responsividade para telas menores (Tablets e Celulares) */
+@media (max-width: 850px) {
+    .hero-conteudo {
         flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-texto h1 {
+        font-size: 2rem;
+    }
+
+    .hero-acoes {
+        justify-content: center;
+    }
+
+    .cabecalho-conteudo {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .menu-navegacao {
+        flex-wrap: wrap;
+        justify-content: center;
     }
 }
